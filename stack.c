@@ -7,14 +7,15 @@ t_element	*ft_lstnew(void *content)
 	elem = (t_element *) malloc(sizeof(t_element));
 	if (!elem)
 		return (NULL);
-	elem ->key = content;
+	elem ->key = (int *)content;
 	elem ->next = NULL;
 	return (elem);
 }
+
 int main(int argc, char **argv)
 {
-	if (argc != 2 && argv[0])
+	if (argc != 2)
 		return (0);
-	ft_printf("%s\n", "hola");
+	printf ("%s\n", "hola");
   	return (0);
 }
