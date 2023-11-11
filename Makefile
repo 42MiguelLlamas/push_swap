@@ -1,5 +1,5 @@
 NAME = pushswap
-SRCS = main.c
+SRCS = main.c aux_ft.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Werror -Wextra
 LIB_DIR = ft_printf

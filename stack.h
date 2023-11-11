@@ -12,5 +12,6 @@ typedef struct s_element{
 }t_element;
 t_element	*ft_lstnew(void *content);
 int main(int argc, char **argv);
-
+int	ft_atoi(const char *str);
+int	ft_isalpha(int a);
 #endif

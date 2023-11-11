@@ -9,6 +9,10 @@ int main(int argc, char **argv)
         ft_printf("%s\n", "Inserte argumentos, por favor.");
 		return (1);
     }
-    ft_printf("%s\n", argv[1]);
-  	return (0);
+    while (*argv)
+    {
+        ft_printf("%s\n", *argv);
+        argv++;
+    }
+    return (0);
 }
