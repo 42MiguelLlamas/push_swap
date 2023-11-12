@@ -5,13 +5,7 @@ int	ft_atoi(const char *str)
 	int	sign;
 	int	num;
 
-	
-	while (*str == ' ' || *str == '\r' || *str == '\t'
-		|| *str == '\n' || *str == '\v' || *str == '\f')
-		str++;
 	sign = 1;
-	if (*str == '\0')
-		return (0);
 	if (*str == '-')
 	{
 		sign = -sign;
@@ -34,4 +28,22 @@ int	ft_isalpha(int a)
 	if ((a >= 65 && a <= 90) || (a >= 97 && a <= 122))
 		return (1);
 	return (0);
+}
+
+void ft_check(const char *str)
+{
+	if (*str == '-')
+		str++;
+	else if (*str == '+')
+		str++;
+	while (*str)
+	{
+		if (*str >= '0' && *str <= '9')
+			str++;
+		else
+		{
+			ft_printf("%s\n", "Error, argumento no entero");
+			exit(1);
+		}
+	}
 }

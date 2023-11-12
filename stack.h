@@ -14,4 +14,5 @@ t_element	*ft_lstnew(void *content);
 int main(int argc, char **argv);
 int	ft_atoi(const char *str);
 int	ft_isalpha(int a);
+void ft_check(const char *str);
 #endif
