@@ -7,7 +7,7 @@
 # include "ft_printf.h"
 
 typedef struct s_element{
-  int  *key;
+  void  *key;
   struct s_element *next;
 }t_element;
 t_element	*ft_lstnew(void *content);

@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
     register int    i;
 
-	if (argc == 1 && argv[0])
+	if (argc < 2)
     {
         ft_printf("%s\n", "Inserte argumentos, por favor.");
 		return (1);
