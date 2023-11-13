@@ -1,49 +1,62 @@
 #include "stack.h"
+#include <string.h>
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *argv)
 {
 	int	sign;
-	int	num;
+	long int	num;
 
 	sign = 1;
-	if (*str == '-')
+	if (*argv == '-')
 	{
 		sign = -sign;
-		str++;
+		argv++;
 	}
-	else if (*str == '+')
-		str++;
+	else if (*argv == '+')
+		argv++;
 	num = 0;
-	while (*str >= '0' && *str <= '9')
+	while (*argv >= '0' && *argv <= '9')
 	{
 		num = num * 10;
-		num = num + (*str - '0');
-		str++;
+		num = num + (*argv - '0');
+		argv++;
+	}
+	if ((num*sign) < -2147483648 || (num*sign) > 2147483647)
+	{
+		write(2, "Error, no es int\n", 17);
+		exit(1);
 	}
 	return (num * sign);
 }
 
-int	ft_isalpha(int a)
+void ft_check(const int index, char **argv)
 {
-	if ((a >= 65 && a <= 90) || (a >= 97 && a <= 122))
-		return (1);
-	return (0);
-}
+	register int	j;
 
-void ft_check(const char *str)
-{
-	if (*str == '-')
-		str++;
-	else if (*str == '+')
-		str++;
-	while (*str)
+	ft_printf("%s\n", argv[index]);
+	if (*argv[index] == '-' || *argv[index] == '+')
+		argv[index]++;
+	while (*argv[index])
 	{
-		if (*str >= '0' && *str <= '9')
-			str++;
+		if (*argv[index] >= '0' && *argv[index] <= '9')
+			argv[index]++;
 		else
 		{
-			ft_printf("%s\n", "Error, argumento no entero");
+			write(2, "Error, argvumento no entero\n", 28);
 			exit(1);
 		}
 	}
+	j = 0;
+	while (argv[++j])
+	{
+		ft_printf("%d %d\n", index, j);
+		if (ft_atoi(argv[index]) == ft_atoi(argv[j]) && j != index)
+		{
+			ft_printf("%s %s\n", argv[index], argv[j]);
+			ft_printf("%d %d\n", ft_atoi(argv[index]), ft_atoi(argv[j]));
+			write(2, "Error, argvumento repetido\n", 27);
+			exit(1);
+		}				
+	}
+	ft_printf("%s\n", "ok repetido");
 }
