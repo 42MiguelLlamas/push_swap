@@ -1,5 +1,4 @@
 #include "stack.h"
-#include <string.h>
 
 int	ft_atoi(char *argv)
 {
