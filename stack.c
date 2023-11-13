@@ -1,13 +1,13 @@
 #include "stack.h"
 
-t_element	*ft_lstnew(void *content)
+t_element	*ft_lstnew(int num)
 {
 	t_element	*elem;
 
 	elem = (t_element *) malloc(sizeof(t_element));
 	if (!elem)
 		return (NULL);
-	elem ->key = (int *)content;
+	elem ->num = number;
 	elem ->next = NULL;
 	return (elem);
 }

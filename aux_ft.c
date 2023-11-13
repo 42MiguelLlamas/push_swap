@@ -21,10 +21,7 @@ int	ft_atoi(char *argv)
 		argv++;
 	}
 	if ((num*sign) < -2147483648 || (num*sign) > 2147483647)
-	{
-		write(2, "Error, no es int\n", 17);
-		exit(1);
-	}
+		ft_exit();
 	return (num * sign);
 }
 
@@ -32,30 +29,41 @@ void ft_check(const int index, char **argv)
 {
 	register int	j;
 
-	ft_printf("%s\n", argv[index]);
-	if (*argv[index] == '-' || *argv[index] == '+')
-		argv[index]++;
-	while (*argv[index])
+	j = 0;
+	if (ft_strlen(argv[index]) == 0)
+		ft_exit();
+	if (argv[index][j] == '-' || argv[index][j] == '+')
+		j++;
+	while (argv[index][j])
 	{
-		if (*argv[index] >= '0' && *argv[index] <= '9')
-			argv[index]++;
+		if (argv[index][j] >= '0' && argv[index][j] <= '9')
+			j++;
 		else
-		{
-			write(2, "Error, argvumento no entero\n", 28);
-			exit(1);
-		}
+			ft_exit();
 	}
 	j = 0;
 	while (argv[++j])
 	{
-		ft_printf("%d %d\n", index, j);
 		if (ft_atoi(argv[index]) == ft_atoi(argv[j]) && j != index)
-		{
-			ft_printf("%s %s\n", argv[index], argv[j]);
-			ft_printf("%d %d\n", ft_atoi(argv[index]), ft_atoi(argv[j]));
-			write(2, "Error, argvumento repetido\n", 27);
-			exit(1);
-		}				
+			ft_exit();
 	}
-	ft_printf("%s\n", "ok repetido");
+}
+
+void ft_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	a;
+
+	a = 0;
+	while (*s)
+	{
+		a++;
+		s++;
+	}
+	return (a);
 }
