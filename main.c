@@ -22,6 +22,7 @@ int main(int argc, char **argv)
         top_a_stack = t_insert(top_a_stack, ft_atoi(argv[argc]));
     top_b_stack = NULL;
     ft_solve(top_a_stack, top_b_stack);
+    swap_a(&top_a_stack);
     while (top_a_stack)
     {
         ft_printf("voy a liberar: %d\n ", top_a_stack->num);
