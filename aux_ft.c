@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "pushswap.h"
 
 int	ft_atoi(char *argv)
 {

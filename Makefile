@@ -1,7 +1,7 @@
-NAME = pushswap
+NAME = push_swap
 SRCS = main.c aux_ft.c t_functions.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 LIB_DIR = ft_printf
 LIB_NAME = libftprintf.a
 
@@ -10,7 +10,7 @@ LIB_NAME = libftprintf.a
 
 all: $(NAME)
 
-%.o: %.c stack.h
+%.o: %.c pushswap.h
 	cc $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
 
 clean:
