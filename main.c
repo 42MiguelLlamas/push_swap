@@ -17,14 +17,9 @@ int main(int argc, char **argv)
     top_b_stack = NULL;
     swap_a(&top_a_stack);
     push_b(&top_a_stack, &top_b_stack);
-    push_b(&top_a_stack, &top_b_stack);
-    push_b(&top_a_stack, &top_b_stack);
-    rr(&top_a_stack, &top_b_stack);
-    rrr(&top_a_stack, &top_b_stack);
+    rotate_a(&top_a_stack);
     swap_a(&top_a_stack);
-    push_a(&top_a_stack, &top_b_stack);
-    push_a(&top_a_stack, &top_b_stack);
-    push_a(&top_a_stack, &top_b_stack);
+    reverse_rotate_a(&top_a_stack);
     final_free(top_a_stack, top_b_stack);
     return (0);
 }
