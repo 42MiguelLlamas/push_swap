@@ -15,11 +15,15 @@ int main(int argc, char **argv)
     while (--argc)
         top_a_stack = t_insert(top_a_stack, ft_atoi(argv[argc]));
     top_b_stack = NULL;
-    swap_a(&top_a_stack);
     push_b(&top_a_stack, &top_b_stack);
+<<<<<<< HEAD
     rotate_a(&top_a_stack);
     swap_a(&top_a_stack);
     reverse_rotate_a(&top_a_stack);
+=======
+    push_b(&top_a_stack, &top_b_stack);
+    push_b(&top_a_stack, &top_b_stack);
+>>>>>>> ef254f3d927186bfe573136a96ec9052672a2972
     final_free(top_a_stack, top_b_stack);
     return (0);
 }
