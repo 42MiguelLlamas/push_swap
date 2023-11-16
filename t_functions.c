@@ -12,12 +12,11 @@ t_element   *t_insert(t_element *top, int number)
     return (top);
 }
 
-t_element    *t_free(t_element *top)
+void    t_free(t_element **top)
 {
     t_element   *temp;
 
-    temp = top;
-    top = top->next;
+    temp = *top;
+    *top = (*top)->next;
     free(temp);
-    return (top);
 }

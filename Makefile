@@ -1,5 +1,5 @@
 NAME = push_swap
-SRCS = main.c aux_ft.c t_functions.c swap_a.c
+SRCS = main.c aux_ft.c t_functions.c swap_a.c push_a.c rotate_a.c reverse_rotate_a.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 LIB_DIR = ft_printf

@@ -12,12 +12,15 @@ typedef struct s_element{
 }t_element;
 
 t_element *t_insert(t_element *top, int number);
-t_element *t_free(t_element *top);
+void    t_free(t_element **top);
 
 int       main(int argc, char **argv);
 void    ft_solve(t_element *top_a_stack, t_element *top_b_stack);
 
 void    swap_a(t_element **top);
+void    push_a(t_element **top_a, t_element **top_b);
+void    rotate_a(t_element **top);
+void    reverse_rotate_a(t_element **top);
 
 int	      ft_atoi(char *str);
 void      ft_check(int index, char **argv);
