@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-void    reverse_rotate_a(t_element **top)
+void    reverse_rotate_b(t_element **top)
 {
     t_element *temp;
 
@@ -10,5 +10,5 @@ void    reverse_rotate_a(t_element **top)
     temp->next->next = *top;
     *top = temp->next;
     temp->next = NULL;
-    ft_printf("%s\n","rra");
+    ft_printf("%s\n","rrb");
 }

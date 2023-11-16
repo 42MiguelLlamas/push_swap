@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-void    swap_a(t_element **top)
+void    swap_b(t_element **top)
 {
     t_element *temp;
 
@@ -11,5 +11,5 @@ void    swap_a(t_element **top)
         temp->next = *top;
         *top = temp;
     }
-    ft_printf("%s\n","sa");
+    ft_printf("%s\n","sb");
 }

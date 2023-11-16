@@ -24,3 +24,11 @@ void    t_free(t_element **top)
     *top = (*top)->next;
     free(temp);
 }
+
+void    final_free(t_element *top_a, t_element *top_b)
+{
+    while (top_a)
+        t_free(&top_a);
+    while (top_a)
+        t_free(&top_b);
+}

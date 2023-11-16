@@ -1,11 +1,5 @@
 #include "pushswap.h"
 
-void    ft_solve(t_element *top_a_stack, t_element *top_b_stack)
-{
-    top_a_stack = top_a_stack;
-    top_b_stack = top_b_stack;
-    return ;
-}
 int main(int argc, char **argv)
 {
     register int    i;
@@ -21,17 +15,17 @@ int main(int argc, char **argv)
     while (--argc)
         top_a_stack = t_insert(top_a_stack, ft_atoi(argv[argc]));
     top_b_stack = NULL;
-    top_b_stack = t_insert(top_b_stack, 42);
-    ft_solve(top_a_stack, top_b_stack);
-    //swap_a(&top_a_stack);
-    ft_printf("top b: %d\n ", top_b_stack->num);
+    swap_a(&top_a_stack);
+    push_b(&top_a_stack, &top_b_stack);
+    push_b(&top_a_stack, &top_b_stack);
+    push_b(&top_a_stack, &top_b_stack);
+    rr(&top_a_stack, &top_b_stack);
+    rrr(&top_a_stack, &top_b_stack);
+    swap_a(&top_a_stack);
     push_a(&top_a_stack, &top_b_stack);
-    reverse_rotate_a(&top_a_stack);
-    while (top_a_stack)
-    {
-        ft_printf("voy a liberar: %d\n ", top_a_stack->num);
-        t_free(&top_a_stack);
-    }
+    push_a(&top_a_stack, &top_b_stack);
+    push_a(&top_a_stack, &top_b_stack);
+    final_free(top_a_stack, top_b_stack);
     return (0);
 }
 
