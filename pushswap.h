@@ -11,7 +11,7 @@ typedef struct s_element{
   struct s_element *next;
 }t_element;
 
-t_element *t_insert(t_element *top, int number);
+t_element *t_insert(t_element **top, int number);
 void    t_free(t_element **top);
 void    final_free(t_element *top_a, t_element *top_b);
 
