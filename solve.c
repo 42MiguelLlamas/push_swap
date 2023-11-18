@@ -12,7 +12,7 @@ int *count_solve(t_element **top_a,t_element **top_b)
 
     min = ft_min(*top_a);
     max = ft_max(*top_a);
-    solution = malloc((max - min)*sizeof(int))
+    auxiliar = malloc((max - min)*sizeof(int))
     if (!solution)
     {
         final_free(top_a_stack, top_b_stack);
