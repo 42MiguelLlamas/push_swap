@@ -17,14 +17,14 @@ void    final_free(t_element *top_a, t_element *top_b);
 
 int       main(int argc, char **argv);
 
-int     t_check_a(t_element *top);
+/* int     t_check_a(t_element *top);
 int     t_length(t_element *top);
 int     ft_min(t_element *top);
 int     find_min(t_element *top);
 t_element *ft_last(t_element *top);
 void    ft_solvethree_a(t_element **top);
 void    ft_roulette(t_element **top_a, t_element **top_b);
-void    ft_solve(t_element **top_a_stack, t_element **top_b_stack);
+void    ft_solve(t_element **top_a_stack, t_element **top_b_stack);*/
 
 void    swap_a(t_element **top);
 void    swap_b(t_element **top);
