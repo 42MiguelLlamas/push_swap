@@ -17,6 +17,7 @@ int main(int argc, char **argv)
         top_a_stack = t_insert(top_a_stack, ft_atoi(argv[argc]));
     top_b_stack = NULL;
     ft_control(&top_a_stack, &top_b_stack);
+    //ft_solve(&top_a_stack, &top_b_stack);
     /*
     temp = top_a_stack;
     ft_printf("%s\n", "Stack A:");

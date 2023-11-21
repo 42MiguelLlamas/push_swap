@@ -17,26 +17,26 @@ void    final_free(t_element *top_a, t_element *top_b);
 
 int       main(int argc, char **argv);
 
-/* int     t_check_a(t_element *top);
+int     t_check_a(t_element *top);
 int     t_length(t_element *top);
 int     ft_min(t_element *top);
 int     find_min(t_element *top);
 t_element *ft_last(t_element *top);
 void    ft_solvethree_a(t_element **top);
 void    ft_roulette(t_element **top_a, t_element **top_b);
-void    ft_solve(t_element **top_a_stack, t_element **top_b_stack);*/
+void    ft_solve(t_element **top_a_stack, t_element **top_b_stack);
 
-int t_check_a(t_element *top);
-void    ft_solvethree_a(t_element **top);
-int     t_length(t_element *top);
-int     ft_min(t_element *top);
-int   ft_rot_min(t_element *top, int len);
-int   rotations_dest(t_element *a, t_element *top_b, int len);
+int     ft_check_t(t_element *top);
+void    ft_solvethree(t_element **top);
+int     ft_length(t_element *top);
+int     ft_mini(t_element *top);
+int     ft_rot_min(t_element *top, int len);
+int     rotations_dest(t_element *a, t_element *top_b, int len);
 int    *ft_find(t_element **top_a, t_element **top_b, int len);
-int ft_direction(t_element *elem, t_element **top, int rot_dst, int len);
-void ft_do_a(t_element **top_a, t_element **top_b, int index, int len);
-void ft_do_b(t_element **top_a, t_element **top_b, int index, int len);
-int ft_index(int *costs, int len);
+int     ft_direction(t_element *elem, t_element **top, int rot_dst, int len);
+void    ft_do_a(t_element **top_a, t_element **top_b, int index, int len);
+void    ft_do_b(t_element **top_a, t_element **top_b, int index, int len);
+int     ft_index(int *costs, int len);
 void    ft_rotate(t_element **top_a);
 void    ft_algorith(t_element **top_a, t_element **top_b);
 void    ft_control(t_element **top_a, t_element **top_b);
