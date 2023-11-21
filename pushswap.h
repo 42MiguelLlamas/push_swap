@@ -16,6 +16,7 @@ void    t_free(t_element **top);
 void    final_free(t_element *top_a, t_element *top_b);
 
 int       main(int argc, char **argv);
+void      printtt(t_element *top_a_stack, t_element *top_b_stack);
 
 int     t_check_a(t_element *top);
 int     t_length(t_element *top);

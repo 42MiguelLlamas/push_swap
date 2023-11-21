@@ -96,7 +96,7 @@ int rotations_dest(t_element *a, t_element *top_b, int len)
     diff = 4294967294;
     while (top_b && j++)
     {
-        if (a->num - top_b->num > 0 && diff > a->num - top_b->num)
+        if (a->num > top_b->num && diff > a->num - top_b->num)
         {
             rot_b = len - j - 1;
             if (j <= len / 2)
@@ -150,7 +150,7 @@ int ft_direction(t_element *elem, t_element **top, int rot_dst, int len)
     diff = 4294967294;
     while (*top && index++)
     {
-        if (elem->num - (*top)->num > 0 && diff > elem->num - (*top)->num)
+        if (elem->num > (*top)->num && diff > elem->num - (*top)->num)
         {
             up = index - 1;
             diff = elem->num - (*top)->num;
@@ -210,6 +210,7 @@ void ft_do_b(t_element **top_a, t_element **top_b, int index, int len)
     while (uod == 0 && rot_dst-- > 0)
         reverse_rotate_a(top_b);
     push_a(top_a, top_b);
+    swap_a(top_a);
 }
 
 int ft_index(int *costs, int len)
@@ -242,14 +243,17 @@ void    ft_rotate(t_element **top_a)
     index = 0;
     min = ft_mini(*top_a);
     while (*top_a && (*top_a)->num != min)
+    {
+        *top_a = (*top_a)->next;
         index++;
+    }
     if (index <= ft_length(*top_a))
     {
-        while (index > 0)
+        while (index-- > 0)
             rotate_a(top_a);
         return ;
     }
-    while (index > 0)
+    while (index-- > 0)
         reverse_rotate_a(top_a);
 }
 
