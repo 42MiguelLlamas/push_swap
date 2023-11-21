@@ -24,7 +24,7 @@ fclean: clean
 re: fclean all
 
 $(LIB_DIR)/$(LIB_NAME): $(LIB_DIR)/Makefile
-	$(MAKE) -C $(LIB_DIR)
+	$(MAKE) re -C $(LIB_DIR)
 
 $(NAME): $(OBJS) $(LIB_DIR)/$(LIB_NAME)
 	$(CC) $(CFLAGS) -I$(LIB_DIR) -o $(NAME) $(OBJS) $(LIB_DIR)/$(LIB_NAME) -L$(LIB_DIR) -lftprintf
