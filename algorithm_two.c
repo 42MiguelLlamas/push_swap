@@ -75,11 +75,11 @@ int ft_mini(t_element *top)
     int min;
 
     min = top->num;
-    while (top)
+    while (top && top->next)
     {
+        top = top->next;
         if (top->num < min)
             min = top->num;
-        top = top->next;
     }
     return (min);
 }
@@ -96,11 +96,14 @@ int ft_rot_min(t_element *top, int len)
     while (top)
     {
         if (top->num == min)
+        {
             index = j;
+            break;
+        }
         j++;
         top = top->next;
     }
-    if (index < len/2)
+    if (index <= len/2)
         return (index);
     return (len - index);
 }
@@ -153,7 +156,6 @@ int    *ft_find(t_element **top_a, t_element **top_b, int len)
             costs[j] = rotations_dest(temp, *top_b, ft_length(*top_b)) + j;
         else
             costs[j] = rotations_dest(temp, *top_b, ft_length(*top_b)) + len - j;
-        
         temp = temp->next;
         j++;
     }
@@ -168,8 +170,9 @@ int ft_direction(t_element *elem, t_element **top, int rot_dst, int len)
     long long int diff;
     int min;
 
-    min = ft_mini(*top);
     up = 0;
+    min = ft_mini(*top);
+    ft_printf("MIN: %d\n", min);
     index = 0;
     min_index = 0;
     diff = 4294967294;
@@ -177,11 +180,11 @@ int ft_direction(t_element *elem, t_element **top, int rot_dst, int len)
     {
         if (elem->num > (*top)->num && diff > elem->num - (*top)->num)
         {
-            up = index - 1;
+            up = index;
             diff = elem->num - (*top)->num;
         }
         if ((*top)->num == min)
-            min_index = index - 1;
+            min_index = index;
         *top = (*top)->next;
     }
     ft_printf("MIN INDEX: %d\n", min_index);
@@ -234,7 +237,7 @@ void ft_do_b(t_element **top_a, t_element **top_b, int index, int len)
             reverse_rotate_b(top_b);
     }
     rot_dst = rotations_dest (*top_b, *top_a, len);
-    uod = ft_direction(*top_a, top_b, rot_dst, len);
+    uod = ft_direction(*top_b, top_a, rot_dst, len);
     while (uod == 0 && rot_dst-- > 0)
         rotate_a(top_a);
     while (uod == 1 && rot_dst-- > 0)
@@ -319,7 +322,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
     while (ft_length(*top_b) > 0)
     {
         costs = ft_find(top_b, top_a, ft_length(*top_b));
-        //printcosts(ft_length(*top_b), costs);
+        printcosts(ft_length(*top_b), costs);
         index = ft_index(costs, ft_length(*top_b));
         ft_do_b(top_a, top_b, index, ft_length(*top_a));;
         printtt(*top_a, *top_b);
