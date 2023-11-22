@@ -57,6 +57,7 @@ void    rrr(t_element **top_a, t_element **top_b);
 
 
 int	      ft_atoi(char *str);
+int	      ft_strncmp(const char *s1, const char *s2, size_t n);
 void      ft_check(int index, char **argv);
 void      ft_exit(void);
 size_t	  ft_strlen(const char *s);
