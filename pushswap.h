@@ -11,7 +11,7 @@ typedef struct s_element{
   struct s_element *next;
 }t_element;
 
-t_element *t_insert(t_element *top, int number);
+
 void    t_free(t_element **top);
 void    final_free(t_element *top_a, t_element *top_b);
 
@@ -34,7 +34,8 @@ int     ft_mini(t_element *top);
 int     ft_rot_min(t_element *top, int len);
 int     rotations_dest(t_element *a, t_element *top_b, int len);
 int    *ft_find(t_element **top_a, t_element **top_b, int len);
-int     ft_direction(t_element *elem, t_element **top, int rot_dst, int len);
+int     ft_sense(int index, int min_index, int len);
+int     ft_direction(t_element *a, t_element *top, int len);
 void    ft_do_a(t_element **top_a, t_element **top_b, int index, int len);
 void    ft_do_b(t_element **top_a, t_element **top_b, int index, int len);
 int     ft_index(int *costs, int len);
@@ -59,4 +60,5 @@ int	      ft_atoi(char *str);
 void      ft_check(int index, char **argv);
 void      ft_exit(void);
 size_t	  ft_strlen(const char *s);
+t_element *t_insert(t_element *top, int number);
 #endif
