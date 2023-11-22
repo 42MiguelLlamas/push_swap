@@ -3,13 +3,13 @@
 void printcosts(int len, int *costs)
 {
     int j;
-
+    
     j = 0;
-    while (len > 1)
+    ft_printf("%s\n", "costs:");
+    while (j <= len - 1)
     {
         ft_printf("%d\n", costs[j]);
         j++;
-        len--;
     }
 }
 
@@ -27,24 +27,31 @@ int ft_check_t(t_element *top)
     return (0);
 }
 
+int ft_max(t_element *top)
+{
+    int max;
+
+    max = top->num;
+    while (top->next)
+    {
+        top = top->next;
+        if (top->num > max)
+            max = top->num;
+    }
+    return (max);
+}
+
 void    ft_solvethree(t_element **top)
 {
-    if ((*top)->num < (*top)->next->num && (*top)->num < (*top)->next->next->num)
-    {
-        swap_a(top);
-        rotate_a(top);
-    }
-    if ((*top)->num < (*top)->next->num && (*top)->num > (*top)->next->next->num)
+    int max;
+
+    max = ft_max(*top);
+    if (max == (*top)->next->num)
         reverse_rotate_a(top);
-    if ((*top)->num > (*top)->next->num && (*top)->num < (*top)->next->next->num)
-        swap_a(top);
-    if ((*top)->num > (*top)->next->num && (*top)->next->num > (*top)->next->next->num)
-    {
-        swap_a(top);
-        reverse_rotate_a(top);
-    }
-    if ((*top)->num > (*top)->next->num && (*top)->next->num < (*top)->next->next->num)
+    else if (max == (*top)->num)
         rotate_a(top);
+    if ((*top)->num >(*top)->next->num)
+        swap_a(top);
     return ;
 }
 
@@ -68,27 +75,13 @@ int ft_mini(t_element *top)
     int min;
 
     min = top->num;
-    while (top->next)
+    while (top)
     {
-        top = top->next;
         if (top->num < min)
             min = top->num;
+        top = top->next;
     }
     return (min);
-}
-
-int ft_max(t_element *top)
-{
-    int max;
-
-    max = top->num;
-    while (top->next)
-    {
-        top = top->next;
-        if (top->num > max)
-            max = top->num;
-    }
-    return (max);
 }
 
 int ft_rot_min(t_element *top, int len)
@@ -100,14 +93,14 @@ int ft_rot_min(t_element *top, int len)
     j = 0;
     index = 0;
     min = ft_mini(top);
-    while (top->next)
+    while (top)
     {
         if (top->num == min)
             index = j;
         j++;
         top = top->next;
     }
-    if (index <= len/2)
+    if (index < len/2)
         return (index);
     return (len - index);
 }
@@ -117,24 +110,27 @@ int rotations_dest(t_element *a, t_element *top_b, int len)
     long long int diff;
     int rot_b;
     int j;
+    t_element *temp;
 
     rot_b = 0;
     j = 0;
-    diff = 4294967297;
-    while (top_b && j++)
+    temp = top_b;
+    diff = 4294967294;
+    while (top_b)
     {
         if (a->num > top_b->num && diff > a->num - top_b->num)
         {
-            rot_b = len - j - 1;
+            rot_b = len - j;
             if (j <= len / 2)
-                rot_b = j - 1;
+                rot_b = j;
             diff = a->num - top_b->num;
         }
         top_b = top_b->next;
+        j++;
     }
-    if (rot_b != 0)
+    if (diff != 4294967294)
         return (rot_b);
-    return (ft_rot_min(top_b, len));
+    return (ft_rot_min(temp, len));
 }
 
 int    *ft_find(t_element **top_a, t_element **top_b, int len)
@@ -170,7 +166,9 @@ int ft_direction(t_element *elem, t_element **top, int rot_dst, int len)
     int index;
     int min_index;
     long long int diff;
+    int min;
 
+    min = ft_mini(*top);
     up = 0;
     index = 0;
     min_index = 0;
@@ -182,10 +180,11 @@ int ft_direction(t_element *elem, t_element **top, int rot_dst, int len)
             up = index - 1;
             diff = elem->num - (*top)->num;
         }
-        if ((*top)->num == ft_mini(*top))
+        if ((*top)->num == min)
             min_index = index - 1;
         *top = (*top)->next;
     }
+    ft_printf("MIN INDEX: %d\n", min_index);
     if ((up != 0 && up <= len / 2) || min_index == rot_dst)
         return (1);
     return (0);
@@ -213,6 +212,10 @@ void ft_do_a(t_element **top_a, t_element **top_b, int index, int len)
     while (uod == 0 && rot_dst-- > 0)
         reverse_rotate_b(top_b);
     push_b(top_a, top_b);
+    if ((*top_a)->num == ft_mini(*top_a))
+        return;
+    if ((*top_a)->num > (*top_a)->next->num && (*top_a)->num != ft_max(*top_a))
+        swap_a(top_a);
 }
 
 void ft_do_b(t_element **top_a, t_element **top_b, int index, int len)
@@ -230,12 +233,12 @@ void ft_do_b(t_element **top_a, t_element **top_b, int index, int len)
         while (index-- > 0)
             reverse_rotate_b(top_b);
     }
-    rot_dst = rotations_dest (*top_a, *top_b, len);
+    rot_dst = rotations_dest (*top_b, *top_a, len);
     uod = ft_direction(*top_a, top_b, rot_dst, len);
-    while (uod == 1 && rot_dst-- > 0)
-        rotate_a(top_b);
     while (uod == 0 && rot_dst-- > 0)
-        reverse_rotate_a(top_b);
+        rotate_a(top_a);
+    while (uod == 1 && rot_dst-- > 0)
+        reverse_rotate_a(top_a);
     push_a(top_a, top_b);
     if ((*top_a)->num == ft_mini(*top_a))
         return;
@@ -305,7 +308,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
         else
         {
             costs = ft_find(top_a, top_b, ft_length(*top_a));
-            printcosts(ft_length(*top_a), costs);
+            //printcosts(ft_length(*top_a), costs);
             index = ft_index(costs, ft_length(*top_a));
             ft_do_a(top_a, top_b, index, ft_length(*top_a));
         }
@@ -316,7 +319,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
     while (ft_length(*top_b) > 0)
     {
         costs = ft_find(top_b, top_a, ft_length(*top_b));
-        printcosts(ft_length(*top_a), costs);
+        //printcosts(ft_length(*top_b), costs);
         index = ft_index(costs, ft_length(*top_b));
         ft_do_b(top_a, top_b, index, ft_length(*top_a));;
         printtt(*top_a, *top_b);

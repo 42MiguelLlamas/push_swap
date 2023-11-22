@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
     i = 0;
-    ft_printf("%d\n", argc);
     while (argv[++i])
         ft_check(i, argv);
     top_a_stack = NULL;
