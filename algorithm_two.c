@@ -202,7 +202,7 @@ int ft_direction(t_element *a, t_element *top, int len)
     return (ft_sense(index, min_index, len));  
 }
 
-/*void ft_do_a(t_element **top_a, t_element **top_b, int index, int len)
+void ft_do_a(t_element **top_a, t_element **top_b, int index, int len)
 {
     int rot_dst;
     int uod;
@@ -219,16 +219,15 @@ int ft_direction(t_element *a, t_element *top, int len)
     }
     rot_dst = rotations_dest(*top_a, *top_b, len);
     uod = ft_direction(*top_a, *top_b, len);
-    while (uod == 1 && rot_dst-- > 0)
-        rotate_b(top_b);
     while (uod == 0 && rot_dst-- > 0)
+        rotate_b(top_b);
+    while (uod == 1 && rot_dst-- > 0)
         reverse_rotate_b(top_b);
     push_b(top_a, top_b);
-    if ((*top_a)->num == ft_mini(*top_a))
+    if ((*top_b)->num == ft_mini(*top_b))
         return;
-    if ((*top_a)->num > (*top_a)->next->num && (*top_a)->num != ft_max(*top_a))
-        swap_a(top_a);
-}*/
+    swap_b(top_b);
+}
 
 void ft_do_b(t_element **top_a, t_element **top_b, int index, int len)
 {
@@ -315,7 +314,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
     while (ft_length(*top_a) > 3)
     {
         push_b(top_a, top_b);
-        /*if (ft_length(*top_b) < 2)
+        /* if (ft_length(*top_b) < 2)
             push_b(top_a, top_b);
         else
         {
@@ -337,7 +336,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
         //printtt(*top_a, *top_b);
     }
     ft_rotate(top_a);
-    printtt(*top_a, *top_b);
+    //printtt(*top_a, *top_b);
 }
 
 void    ft_control(t_element **top_a, t_element **top_b)
