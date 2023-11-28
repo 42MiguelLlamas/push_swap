@@ -86,3 +86,23 @@ t_element   *t_insert(t_element *top, int number)
     top = temp;
     return (top);
 }
+
+/*void printtt(t_element *top_a_stack, t_element *top_b_stack)
+{
+    t_element       *temp;
+
+    temp = top_a_stack;
+    ft_printf("%s\n", "Stack A:");
+    while (temp)
+    {
+        ft_printf("%d ", temp->num);
+        temp = temp->next;
+    }
+    temp = top_b_stack;
+    ft_printf("\n%s\n", "Stack B:");
+    while (temp)
+    {
+        ft_printf("%d ", temp->num);
+        temp = temp->next;
+    }
+}*/
