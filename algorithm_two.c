@@ -8,7 +8,7 @@ void printcosts(int len, int *costs)
     ft_printf("\n%s\n", "costs:");
     while (j <= len - 1)
     {
-        ft_printf("%d\n", costs[j]);
+        ft_printf("%d ", costs[j]);
         j++;
     }
 }
@@ -165,7 +165,7 @@ int ft_sense(int index, int min_index, int len)
 {  
     if (index == -1)
     {
-        if (min_index < len/2)
+        if (min_index <= len/2)
             return (0);
         return (1);
     }
@@ -246,6 +246,7 @@ void ft_do_b(t_element **top_a, t_element **top_b, int index, int lena, int lenb
     }
     rot_dst = rotations_dest (*top_b, *top_a, lena);
     uod = ft_direction(*top_b, *top_a, lena);
+    //ft_printf("Rot dest: %d\n", rot_dst);
     while (uod == 0 && rot_dst-- > 0)
         rotate_a(top_a);
     while (uod == 1 && rot_dst-- > 0)
@@ -309,19 +310,7 @@ void    ft_algorith(t_element **top_a, t_element **top_b)
     costs = NULL;
     index = 0;
     while (ft_length(*top_a) > 3)
-    {
         push_b(top_a, top_b);
-        /* if (ft_length(*top_b) < 2)
-            push_b(top_a, top_b);
-        else
-        {
-            costs = ft_costs(top_a, top_b, ft_length(*top_a));
-            //printcosts(ft_length(*top_a), costs);
-            index = ft_index(costs, ft_length(*top_a));
-            ft_do_a(top_a, top_b, index, ft_length(*top_a));
-        }*/
-        //printtt(*top_a, *top_b);
-    }
     ft_solvethree(top_a);
     //printtt(*top_a, *top_b);
     while (ft_length(*top_b) > 0)
