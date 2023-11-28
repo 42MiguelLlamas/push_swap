@@ -8,14 +8,14 @@ void printtt(t_element *top_a_stack, t_element *top_b_stack)
     ft_printf("%s\n", "Stack A:");
     while (temp)
     {
-        ft_printf("%d\n", temp->num);
+        ft_printf("%d ", temp->num);
         temp = temp->next;
     }
     temp = top_b_stack;
-    ft_printf("%s\n", "Stack B:");
+    ft_printf("\n%s\n", "Stack B:");
     while (temp)
     {
-        ft_printf("%d\n", temp->num);
+        ft_printf("%d ", temp->num);
         temp = temp->next;
     }
 }

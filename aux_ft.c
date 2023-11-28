@@ -13,6 +13,8 @@ int	ft_atoi(char *argv)
 	}
 	else if (*argv == '+')
 		argv++;
+	if (!(*argv))
+		ft_exit();
 	num = 0;
 	while (*argv >= '0' && *argv <= '9')
 	{
@@ -59,10 +61,7 @@ void ft_check(const int index, char **argv)
 
 	j = 0;
 	if (ft_strlen(argv[index]) == 0)
-		{
-			ft_printf("%s\n", "arg vacio");
 			ft_exit();
-		}
 	if (argv[index][j] == '-' || argv[index][j] == '+')
 		j++;
 	while (argv[index][j])
@@ -70,25 +69,19 @@ void ft_check(const int index, char **argv)
 		if (argv[index][j] >= '0' && argv[index][j] <= '9')
 			j++;
 		else
-		{
-			ft_printf("%s\n", "arg no int");
 			ft_exit();
-		}
 	}
 	j = 0;
 	while (argv[++j])
 	{
-		if (ft_strncmp(argv[index], argv[j], 11) == 0 && j != index)
-		{
-			ft_printf("%s\n", "arg repetido");
+		if (ft_atoi(argv[index]) == ft_atoi(argv[j]) && j != index)
 			ft_exit();
-		}
 	}
 }
 
 void ft_exit(void)
 {
-	ft_printf("%s\n", "Error");
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
