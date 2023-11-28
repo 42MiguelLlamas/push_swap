@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-void printtt(t_element *top_a_stack, t_element *top_b_stack)
+/*void printtt(t_element *top_a_stack, t_element *top_b_stack)
 {
     t_element       *temp;
 
@@ -18,7 +18,7 @@ void printtt(t_element *top_a_stack, t_element *top_b_stack)
         ft_printf("%d ", temp->num);
         temp = temp->next;
     }
-}
+}*/
 
 int main(int argc, char **argv)
 {

@@ -1,5 +1,6 @@
 #include "pushswap.h"
 
+/*
 void printcosts(int len, int *costs)
 {
     int j;
@@ -11,7 +12,7 @@ void printcosts(int len, int *costs)
         ft_printf("%d ", costs[j]);
         j++;
     }
-}
+}*/
 
 int ft_check_t(t_element *top)
 {
