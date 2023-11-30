@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arg_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mllamas- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 18:57:45 by mllamas-          #+#    #+#             */
+/*   Updated: 2023/11/30 09:34:28 by mllamas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "pushswap.h"
 
 int	ft_atoi(char *argv)
 {
-	int	sign;
+	int			sign;
 	long int	num;
 
 	sign = 1;
@@ -22,19 +33,18 @@ int	ft_atoi(char *argv)
 		num = num + (*argv - '0');
 		argv++;
 	}
-	if ((num*sign) < -2147483648 || (num*sign) > 2147483647)
+	if ((num * sign) < -2147483648 || (num * sign) > 2147483647)
 		ft_exit();
 	return (num * sign);
 }
 
-
-void ft_check(const int index, char **argv)
+void	ft_check(const int index, char **argv)
 {
 	register int	j;
 
 	j = 0;
 	if (ft_strlen(argv[index]) == 0)
-			ft_exit();
+		ft_exit();
 	if (argv[index][j] == '-' || argv[index][j] == '+')
 		j++;
 	while (argv[index][j])
@@ -52,7 +62,7 @@ void ft_check(const int index, char **argv)
 	}
 }
 
-void ft_exit(void)
+void	ft_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
@@ -71,20 +81,21 @@ size_t	ft_strlen(const char *s)
 	return (a);
 }
 
-t_element   *t_insert(t_element *top, int number)
+t_element	*t_insert(t_element *top, int number)
 {
-    t_element   *temp;
-    temp = malloc(sizeof(t_element));
-    if (!temp)
-    {
-        while (top)
-            t_free(&top);
-        return (NULL);
-    }
-    temp->num = number;
-    temp->next = top;
-    top = temp;
-    return (top);
+	t_element	*temp;
+
+	temp = malloc(sizeof(t_element));
+	if (!temp)
+	{
+		while (top)
+			t_free(&top);
+		return (NULL);
+	}
+	temp->num = number;
+	temp->next = top;
+	top = temp;
+	return (top);
 }
 
 /*void printtt(t_element *top_a_stack, t_element *top_b_stack)
